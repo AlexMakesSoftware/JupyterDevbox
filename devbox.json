@@ -2,13 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
   "packages": {    
     "gcc":                            "12.2.0",
-    "jq": "latest",
+    "jq":                             "latest",
     "python3":                        "latest",
-    "python312Packages.stdenv":       "latest",
-    "python312Packages.jupyter":      "latest",
-    "python312Packages.plotly":       "latest",
-    "python312Packages.pandas":       "latest",
-    "python312Packages.scikit-learn": "latest",
+    "python312Packages.stdenv":       "latest",    
     "vscodium":                       "latest",
     "cowsay":                         "latest",
     "lolcat":                         "latest",
@@ -20,12 +16,15 @@
   "env": {
     "LC_ALL":   "C",
     "LANG":     "C",
-    "GREETING": "Welcome to your dev environment. To start vscodium type 'codium .' Please note that some packages won't work when installed via pip (if they use low-level libraries)."
+    "GREETING": "Welcome to your Jupyter dev environment. To start vscodium type 'codium .' - to exit this shell type 'exit'."
   },
   "shell": {
     "init_hook": [
       "export LD_LIBRARY_PATH=./.devbox/nix/profile/default/lib",
       "source \"$VENV_DIR/bin/activate\" || { echo \"Failed to activate virtual environment\"; exit 1; } ",
+      "echo \"Checking pip packages, this might take a while, please wait...\" | lolcat",
+      "pip install --upgrade pip -q",
+      "pip install -r requirements.txt -q",
       "codium --list-extensions | grep -q ms-python.python || codium --install-extension ms-python.python",
       "codium --list-extensions | grep -q ms-toolsai.jupyter || codium --install-extension ms-toolsai.jupyter",
       "chmod +x setup_kernel.sh",

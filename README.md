@@ -8,3 +8,10 @@ To use this, first you need to follow the installation instructions for devbox, 
 
 NOTE: This is a WIP, concept evaluator and by no means is it ready for production. I am very new to Nix and Devbox and no doubt this doesn't implement best-practices.
 
+TIP: Make sure you clear all the outputs on your notebook before doing any git opperations - or else you'll keep checking in your notebook.
+
+Development notes:
+
+Codium doesn't always seem to automatically detect the kernel in good time, give it a moment. 
+
+

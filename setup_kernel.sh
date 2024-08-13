@@ -23,7 +23,10 @@ if ! jupyter kernelspec list | grep -q 'devbox-env'; then
         cat <<EOL > "$SETTINGS_FILE"
 {
     "jupyter.jupyterServerType": "local",
-    "jupyter.notebook.defaultKernel": "devbox-env"
+    "jupyter.notebook.defaultKernel": "devbox-env",
+    "workbench.colorCustomizations": {
+        "editorLineNumber.foreground": "#c78943" //change line number colour to make it obvious config was applied.
+    }
 }
 EOL
 fi
